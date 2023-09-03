@@ -1,34 +1,38 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import "../styles.css";
-
 function App() {
-  const [name, setName] = useState("");
-  const [headingText, setHeading] = useState("");
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
 
-  function handleChange(event) {
-    setName(event.target.value);
+  function updateFName(event) {
+    const firstName = event.target.value;
+    setFName(firstName);
   }
 
-  function handleClick(event) {
-    setHeading(name);
-    event.preventDefault();
+  function updateLName(event) {
+    const lasttName = event.target.value;
+    setLName(lasttName);
   }
 
   return (
     <div className="container">
-      <h1>Hello {headingText} </h1>
-      <form onSubmit={handleClick}>
-        {" "}
+      <h1>
+        Hello {fName} {lName}
+      </h1>
+      <form>
         <input
-          onChange={handleChange}
-          type="text"
-          placeholder="What's your name?"
-          value={name}
+          name="fName"
+          onChange={updateFName}
+          placeholder="First Name"
+          value={fName}
         />
-        <button type="submit" onClick={handleClick}>
-          Submit
-        </button>
+        <input
+          name="lName"
+          onChange={updateLName}
+          placeholder="Last Name"
+          value={lName}
+        />
+        <button>Submit</button>
       </form>
     </div>
   );
